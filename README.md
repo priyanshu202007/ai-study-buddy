@@ -152,13 +152,38 @@ AI Study Buddy aims to reduce study time while improving understanding through i
 | Day 7 | Final Demo |
 
 ---
-# 🔮 Future Scope
+# 🚀 Product Roadmap
 
-- Mobile Application
-- Voice-based Study Assistant
-- Multi-language Support
-- Cloud Storage
-- AI Exam Preparation
+## AI Study Buddy v1.0 (Hackathon MVP)
+
+- 📄 Upload Study Materials
+- 🤖 Chat with PDF
+- 📝 AI Note Summarizer
+- ❓ Quiz Generator
+- 📅 Personalized Study Planner
+- 🎯 Important Topics Finder
+
+---
+
+## AI Study Buddy v2.0
+
+- 👤 User Authentication
+- 📚 Flashcards
+- 🧠 Mind Maps
+- 📊 Study Analytics
+- 🔔 Daily Study Reminders
+- ☁️ Cloud Storage
+
+---
+
+## AI Study Buddy v3.0
+
+- 🎤 Voice Assistant
+- 📷 OCR for Handwritten Notes
+- 🌍 Multi-language Support
+- 👥 Group Study
+- 🤖 AI Career Mentor
+- 📱 Mobile Application
 - Performance Analytics
   ---
 
