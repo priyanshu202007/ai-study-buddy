@@ -1,6 +1,6 @@
-import os
 from groq import Groq
 from dotenv import load_dotenv
+import os
 
 load_dotenv()
 
@@ -9,18 +9,20 @@ client = Groq(
 )
 
 
-def generate_flashcards(text: str):
+def ask_question(text: str, question: str):
+
     prompt = f"""
-Create study flashcards from the following text.
+You are an AI Study Buddy.
 
-Return them in this format:
+Use ONLY the study material below to answer.
 
-Q: Question
-A: Answer
-
-Keep them short and useful for revision.
-
+Study Material:
 {text[:4000]}
+
+Question:
+{question}
+
+Answer clearly and simply.
 """
 
     response = client.chat.completions.create(
@@ -31,8 +33,8 @@ Keep them short and useful for revision.
                 "content": prompt
             }
         ],
-        temperature=0.3,
-        max_tokens=700,
+        temperature=0.2,
+        max_tokens=700
     )
 
     return response.choices[0].message.content
