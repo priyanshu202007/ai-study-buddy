@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import DownloadButton from "./components/DownloadButton";
+import NotesSearch from "./components/NotesSearch";
 function App() {
   const [file, setFile] = useState(null);
   const [uploadedFilename, setUploadedFilename] = useState("");
@@ -264,6 +265,8 @@ function App() {
         content={response}
         filename="AI_Study_Material.txt"
       />
+
+      <NotesSearch content={response} />
     </div>
   );
 }
