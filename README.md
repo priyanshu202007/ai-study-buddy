@@ -57,7 +57,7 @@ Unlike traditional chatbots, AI Study Buddy also remembers user preferences usin
 ## 📝 AI Notes Generation
 
 ![Notes](assets/notes.png)
-
+...
 ---
 
 ## 🧠 Personalized Memory with Mem0
