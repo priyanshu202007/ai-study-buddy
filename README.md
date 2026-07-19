@@ -1,196 +1,182 @@
 # 📚 AI Study Buddy
 
-> AI-powered study assistant that helps students learn smarter using Artificial Intelligence.
-# 📚 AI Study Buddy
-
-> AI-powered study assistant that helps students learn smarter by summarizing notes, answering questions from study materials, generating quizzes, and creating personalized study plans.
-
-![Status](https://img.shields.io/badge/Status-Under%20Development-orange)
-![Python](https://img.shields.io/badge/Python-3.13-blue)
-![AI](https://img.shields.io/badge/AI-Google%20Gemini-red)
-![License](https://img.shields.io/badge/License-MIT-green)
+> Your AI-powered learning assistant for smarter, faster, and personalized studying.
 
 ---
 
-# 📌 Project Overview
+## 🚀 Overview
 
-AI Study Buddy is an intelligent learning assistant built for students.
+AI Study Buddy is an intelligent learning assistant that helps students learn from PDF study materials using AI.
 
-It helps students upload study materials and interact with them using Artificial Intelligence to make learning faster, easier, and more personalized.
+Students can upload lecture notes, textbooks, or PDFs and instantly generate:
 
-This project is being developed as part of the **Build in AI for India Hackathon 2026**.
+- 📝 Smart Notes
+- 📄 AI Summary
+- ❓ Quiz Questions
+- 🧠 Flashcards
+- 🤖 AI Chat
+- 🎤 AI Viva Practice
 
----
-
-# 🚨 Problem Statement
-
-Students often struggle with:
-
-- Long study notes
-- Time-consuming revision
-- Lack of personalized study plans
-- Difficulty finding important concepts quickly
+Unlike traditional chatbots, AI Study Buddy also remembers user preferences using **Mem0**, making learning more personalized.
 
 ---
 
-# 💡 Our Solution
+# ✨ Features
 
-AI Study Buddy allows students to:
+✅ PDF Upload
 
-- Upload study notes and PDFs
-- Get AI-generated summaries
-- Ask questions from uploaded notes
-- Generate quizzes for practice
-- Create personalized study plans
+✅ AI Notes Generation
+
+✅ AI Summary
+
+✅ AI Quiz Generator
+
+✅ AI Flashcards
+
+✅ AI Chat
+
+✅ AI Viva Mode
+
+✅ Personalized Memory using Mem0
 
 ---
-# 🚀 Planned Features
+# 📸 Screenshots
 
-- 📄 Upload PDF Notes
-- 🤖 AI Chat with Notes
-- 📝 Automatic Notes Summary
-- ❓ Quiz Generator
-- 📅 Study Planner
-- 📚 Flashcards
-- 🎯 Revision Mode
-# ✨ Current Development Status
+## 🏠 Home Page
 
-## Completed
-
-- ✅ GitHub Repository
-- ✅ Project Planning
-- ✅ README Documentation
-
-## In Progress
-
-- ⏳ Project Setup
-- ⏳ Gemini API Integration
-- ⏳ PDF Upload System
-
-## Planned
-
-- 📚 AI Note Summarizer
-- ❓ AI Question Answering
-- 📝 Quiz Generator
-- 📅 Study Planner
-- 📄 PDF Chat
-- 🎯 Revision Assistant
+![Home](https://raw.githubusercontent.com/priyanshu202007/ai-study-buddy/main/assests/home.png)
 
 ---
 
-# 🛠 Tech Stack
+## 📄 PDF Upload
 
-## Frontend
+![Upload](https://raw.githubusercontent.com/priyanshu202007/ai-study-buddy/main/assests/upload.png)
 
-- To be decided
+---
 
-## Backend
+## 📝 AI Notes Generation
 
+![Notes](https://raw.githubusercontent.com/priyanshu202007/ai-study-buddy/main/assests/notes.png)
+
+...
+---
+
+## 🧠 Personalized Memory with Mem0
+
+The assistant remembers user preferences across conversations.
+
+Example:
+
+User:
+> My favorite programming language is Python.
+
+Later...
+
+User:
+> Do you remember my favorite language?
+
+AI:
+> Yes, I remember. Your favorite programming language is Python.
+
+![Memory](https://raw.githubusercontent.com/priyanshu202007/ai-study-buddy/main/assests/memory.png)
+
+# 🏗️ Architecture
+
+```
+            React Frontend
+                   │
+                   ▼
+           FastAPI Backend
+            │            │
+            ▼            ▼
+        Groq API      Mem0 API
+            │
+            ▼
+      AI Generated Responses
+```
+
+---
+
+# 🛠️ Tech Stack
+
+### Frontend
+
+- React
+- Vite
+- Axios
+- React Icons
+- React Toastify
+
+### Backend
+
+- FastAPI
 - Python
+- Uvicorn
 
-## AI
+### AI
 
-- Google Gemini API
+- Groq (Llama 3.3 70B)
 
-## Version Control
+### Memory
 
-- Git
-- GitHub
+- Mem0
+
+---
+
+# 💡 How It Works
+
+1. Upload a PDF.
+2. Text is extracted from the document.
+3. AI processes the content.
+4. Users can generate:
+   - Notes
+   - Summary
+   - Quiz
+   - Flashcards
+   - Chat
+   - Viva
+5. Mem0 stores important user preferences for personalized learning.
+
+---
+
+# 🎯 Demo
+
+Example:
+
+User:
+
+> My favorite programming language is Python.
+
+Later...
+
+User:
+
+> What is my favorite programming language?
+
+AI:
+
+> Your favorite programming language is Python.
 
 ---
 
 # 📂 Project Structure
 
 ```
-ai-study-buddy/
-
-│── README.md
-
-│── LICENSE
-
-│── .gitignore
-
-│
-
-├── backend/
-
-├── frontend/
-
-├── assets/
-
-└── docs/
+frontend/
+backend/
+uploads/
+assets/
+docs/
 ```
 
 ---
 
-# 🎯 Project Vision
+# 👥 Team
 
-Our vision is to build an AI-powered study companion that makes learning interactive, personalized, and accessible for every student.
-
-AI Study Buddy aims to reduce study time while improving understanding through intelligent assistance.
----
-
-# 👨‍💻 Team
-
-## CodeCraftersAI
-
-- Priyanshu Kumar
-- D Linisha 
-- Bhagath Madhya
----
-
-# 📅 Hackathon Progress
-
-| Day | Progress |
-|------|----------|
-| Day 1 | Repository Setup ✅ |
-| Day 2 | Project Setup |
-| Day 3 | AI Integration |
-| Day 4 | Core Features |
-| Day 5 | UI Improvements |
-| Day 6 | Testing |
-| Day 7 | Final Demo |
-
----
-# 🚀 Product Roadmap
-
-## AI Study Buddy v1.0 (Hackathon MVP)
-
-- 📄 Upload Study Materials
-- 🤖 Chat with PDF
-- 📝 AI Note Summarizer
-- ❓ Quiz Generator
-- 📅 Personalized Study Planner
-- 🎯 Important Topics Finder
+Team Name: AI Study Buddy
 
 ---
 
-## AI Study Buddy v2.0
+# ❤️ Built For
 
-- 👤 User Authentication
-- 📚 Flashcards
-- 🧠 Mind Maps
-- 📊 Study Analytics
-- 🔔 Daily Study Reminders
-- ☁️ Cloud Storage
-
----
-
-## AI Study Buddy v3.0
-
-- 🎤 Voice Assistant
-- 📷 OCR for Handwritten Notes
-- 🌍 Multi-language Support
-- 👥 Group Study
-- 🤖 AI Career Mentor
-- 📱 Mobile Application
-- Performance Analytics
-  ---
-
-Made with ❤️ by Team CodeCraftersAI
-
-Build in AI for India Hackathon 2026
-  
-# 📄 License
-
-This project is licensed under the MIT License.
+Build in AI Hackathon
