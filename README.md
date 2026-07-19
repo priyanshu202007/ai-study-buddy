@@ -44,19 +44,20 @@ Unlike traditional chatbots, AI Study Buddy also remembers user preferences usin
 
 ## 🏠 Home Page
 
-![Home](assets/home.png)
+![Home](https://raw.githubusercontent.com/priyanshu202007/ai-study-buddy/main/assets/home.png)
 
 ---
 
 ## 📄 PDF Upload
 
-![Upload](assets/upload.png)
+![Upload](https://raw.githubusercontent.com/priyanshu202007/ai-study-buddy/main/assets/upload.png)
 
 ---
 
 ## 📝 AI Notes Generation
 
-![Notes](assets/notes.png)
+![Notes](https://raw.githubusercontent.com/priyanshu202007/ai-study-buddy/main/assets/notes.png)
+
 ...
 ---
 
@@ -77,7 +78,7 @@ User:
 AI:
 > Yes, I remember. Your favorite programming language is Python.
 
-![Mem0](assets/memory.png)
+![Memory](https://raw.githubusercontent.com/priyanshu202007/ai-study-buddy/main/assets/memory.png)
 
 # 🏗️ Architecture
 
