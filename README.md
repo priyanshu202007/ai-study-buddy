@@ -168,6 +168,138 @@ uploads/
 assets/
 docs/
 ```
+# 🚀 Installation
+
+## 1. Clone the Repository
+
+```bash
+git clone https://github.com/priyanshu202007/ai-study-buddy.git
+cd ai-study-buddy
+```
+
+---
+
+## 2. Frontend Setup
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+The frontend will start at:
+
+```
+http://localhost:5173
+```
+
+---
+
+## 3. Backend Setup
+
+```bash
+cd backend
+
+# Create Virtual Environment
+python -m venv venv
+
+# Activate Virtual Environment
+
+# Windows
+venv\Scripts\activate
+
+# Linux / macOS
+source venv/bin/activate
+
+# Install Dependencies
+pip install -r requirements.txt
+
+# Start Backend
+uvicorn main:app --reload
+```
+
+The backend will start at:
+
+```
+http://127.0.0.1:8000
+```
+
+Swagger API Documentation:
+
+```
+http://127.0.0.1:8000/docs
+```
+
+---
+
+# 🔑 Environment Variables
+
+Create a `.env` file inside the **backend** folder.
+
+Example:
+
+```env
+GROQ_API_KEY=your_groq_api_key
+MEM0_API_KEY=your_mem0_api_key
+```
+
+Replace the values with your own API keys.
+
+---
+
+# 📂 Project Structure
+
+```
+ai-study-buddy/
+│
+├── backend/
+│   ├── routers/
+│   ├── services/
+│   ├── uploads/
+│   ├── main.py
+│   ├── requirements.txt
+│   └── .env
+│
+├── frontend/
+│   ├── src/
+│   ├── public/
+│   ├── package.json
+│   └── vite.config.js
+│
+├── assets/
+├── docs/
+├── README.md
+├── LICENSE
+└── .gitignore
+```
+
+---
+
+# ▶️ Running the Application
+
+Open **two terminals**.
+
+### Terminal 1
+
+```bash
+cd backend
+uvicorn main:app --reload
+```
+
+### Terminal 2
+
+```bash
+cd frontend
+npm run dev
+```
+
+Open:
+
+```
+http://localhost:5173
+```
+
+Enjoy using **AI Study Buddy** 🎓🚀
 
 ---
 
