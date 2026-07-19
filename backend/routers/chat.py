@@ -10,6 +10,7 @@ router = APIRouter()
 class ChatRequest(BaseModel):
     filename: str
     question: str
+    user_id: str
 
 
 @router.post("/chat")
@@ -24,8 +25,9 @@ def chat(request: ChatRequest):
         )
 
     answer = ask_question(
-        text,
-        request.question
+        text=text,
+        question=request.question,
+        user_id=request.user_id
     )
 
     return {

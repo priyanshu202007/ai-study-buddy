@@ -1,25 +1,55 @@
 import { useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
+
+import "./App.css";
+
+import Sidebar from "./components/Sidebar";
+import Hero from "./components/Hero";
+import UploadCard from "./components/UploadCard";
+import FeatureButtons from "./components/FeatureButtons";
+import ResponseCard from "./components/ResponseCard";
+import ChatBox from "./components/ChatBox";
+import VivaBox from "./components/VivaBox";
+
+// Create a unique user ID for each browser
+const userId = "demo123";
+
 
 function App() {
-  const [file, setFile] = useState(null);
-  const [uploadedFilename, setUploadedFilename] = useState("");
-  const [question, setQuestion] = useState("");
-  const [response, setResponse] = useState("");
 
-  // ---------------- Upload PDF ----------------
+  const [file, setFile] = useState(null);
+
+  const [uploadedFilename, setUploadedFilename] = useState("");
+
+  const [question, setQuestion] = useState("");
+
+  const [notes, setNotes] = useState("");
+
+  const [summary, setSummary] = useState("");
+
+  const [quiz, setQuiz] = useState("");
+
+  const [flashcards, setFlashcards] = useState("");
+
+  const [chatAnswer, setChatAnswer] = useState("");
+
+  const [loading, setLoading] = useState("");
 
   const uploadFile = async () => {
+
     if (!file) {
-      alert("Please choose a PDF first.");
+      toast.warning("Please choose a PDF first.");
       return;
     }
 
     const formData = new FormData();
+
     formData.append("file", file);
 
+    setLoading("upload");
+
     try {
-      setResponse("Uploading...");
 
       const res = await axios.post(
         "http://127.0.0.1:8000/upload",
@@ -33,232 +63,239 @@ function App() {
 
       setUploadedFilename(res.data.filename);
 
-      setResponse(
-        "✅ Upload Successful!\n\n" +
-          JSON.stringify(res.data, null, 2)
-      );
+      toast.success("PDF Uploaded Successfully!");
+
     } catch (err) {
+
       console.error(err);
 
-      if (err.response) {
-        setResponse(
-          "❌ Server Error\n\n" +
-            JSON.stringify(err.response.data, null, 2)
-        );
-      } else if (err.request) {
-        setResponse(
-          "❌ No response received from backend.\nCheck if FastAPI is running."
-        );
-      } else {
-        setResponse("❌ " + err.message);
-      }
+      toast.error(
+        err.response?.data?.detail ||
+        err.message ||
+        "Upload Failed"
+      );
+
+    } finally {
+
+      setLoading("");
+
     }
+
   };
 
-  // ---------------- Generate Notes ----------------
-
   const generateNotes = async () => {
+
     if (!uploadedFilename) {
-      alert("Upload a PDF first.");
+      toast.warning("Please upload a PDF first.");
       return;
     }
 
+    setLoading("notes");
+
     try {
-      setResponse("Generating Notes...");
 
       const res = await axios.get(
         `http://127.0.0.1:8000/notes/${uploadedFilename}`
       );
 
-      setResponse(res.data.notes);
-    } catch (err) {
-      console.error(err);
-      setResponse("❌ Failed to generate notes.");
+      setNotes(res.data.notes);
+
+    } catch {
+
+      toast.error("Failed to generate notes.");
+
+    } finally {
+
+      setLoading("");
+
     }
+
   };
+    const generateSummary = async () => {
 
-  // ---------------- Generate Summary ----------------
-
-  const generateSummary = async () => {
     if (!uploadedFilename) {
-      alert("Upload a PDF first.");
+      toast.warning("Please upload a PDF first.");
       return;
     }
 
+    setLoading("summary");
+
     try {
-      setResponse("Generating Summary...");
 
       const res = await axios.get(
         `http://127.0.0.1:8000/summary/${uploadedFilename}`
       );
 
-      setResponse(res.data.summary);
+      setSummary(res.data.summary);
+
     } catch (err) {
+
       console.error(err);
-      setResponse("❌ Failed to generate summary.");
+
+      toast.error("Failed to generate summary.");
+
+    } finally {
+
+      setLoading("");
+
     }
+
   };
 
-  // ---------------- Generate Quiz ----------------
-
   const generateQuiz = async () => {
+
     if (!uploadedFilename) {
-      alert("Upload a PDF first.");
+      toast.warning("Please upload a PDF first.");
       return;
     }
 
+    setLoading("quiz");
+
     try {
-      setResponse("Generating Quiz...");
 
       const res = await axios.get(
         `http://127.0.0.1:8000/quiz/${uploadedFilename}`
       );
 
-      setResponse(res.data.quiz);
+      setQuiz(res.data.quiz);
+
     } catch (err) {
+
       console.error(err);
-      setResponse("❌ Failed to generate quiz.");
+
+      toast.error("Failed to generate quiz.");
+
+    } finally {
+
+      setLoading("");
+
     }
+
   };
 
-  // ---------------- Generate Flashcards ----------------
-
   const generateFlashcards = async () => {
+
     if (!uploadedFilename) {
-      alert("Upload a PDF first.");
+      toast.warning("Please upload a PDF first.");
       return;
     }
 
+    setLoading("flashcards");
+
     try {
-      setResponse("Generating Flashcards...");
 
       const res = await axios.get(
         `http://127.0.0.1:8000/flashcards/${uploadedFilename}`
       );
 
-      setResponse(res.data.flashcards);
-    } catch (err) {
-      console.error(err);
-      setResponse("❌ Failed to generate flashcards.");
-    }
-  };
+      setFlashcards(res.data.flashcards);
 
-  // ---------------- Ask AI ----------------
+    } catch (err) {
+
+      console.error(err);
+
+      toast.error("Failed to generate flashcards.");
+
+    } finally {
+
+      setLoading("");
+
+    }
+
+  };
 
   const askAI = async () => {
+
     if (!uploadedFilename) {
-      alert("Upload a PDF first.");
+      toast.warning("Please upload a PDF first.");
       return;
     }
 
-    if (!question) {
-      alert("Type a question.");
+    if (!question.trim()) {
+      toast.warning("Please enter a question.");
       return;
     }
+
+    setLoading("chat");
 
     try {
-      setResponse("Thinking...");
 
-      const res = await axios.post(
-        "http://127.0.0.1:8000/chat",
-        {
-          filename: uploadedFilename,
-          question: question,
-        }
-      );
+    const res = await axios.post(
+  "http://127.0.0.1:8000/chat",
+  {
+    filename: uploadedFilename,
+    question: question,
+    user_id: userId,
+  }
+);
 
-      setResponse(res.data.answer);
+      setChatAnswer(res.data.answer);
+
     } catch (err) {
+
       console.error(err);
-      setResponse("❌ Failed to get AI response.");
+
+      toast.error("Failed to get AI response.");
+
+    } finally {
+
+      setLoading("");
+
     }
+
   };
+    return (
 
-  return (
-    <div
-      style={{
-        maxWidth: "900px",
-        margin: "40px auto",
-        textAlign: "center",
-        fontFamily: "Arial",
-      }}
-    >
-      <h1>📚 AI Study Buddy</h1>
+    <div className="app">
 
-      <h2>Upload PDF</h2>
+      <Sidebar />
 
-      <input
-        type="file"
-        accept=".pdf"
-        onChange={(e) => setFile(e.target.files[0])}
-      />
+      <main className="main-content">
 
-      <br />
-      <br />
+        <Hero />
 
-      <button onClick={uploadFile}>Upload</button>
+        <UploadCard
+          file={file}
+          setFile={setFile}
+          uploadFile={uploadFile}
+          uploadedFilename={uploadedFilename}
+          loading={loading === "upload"}
+        />
 
-      <hr />
+        <FeatureButtons
+          generateNotes={generateNotes}
+          generateSummary={generateSummary}
+          generateQuiz={generateQuiz}
+          generateFlashcards={generateFlashcards}
+          loading={loading}
+        />
 
-      <button onClick={generateNotes}>Generate Notes</button>
+        <ResponseCard response={notes} />
 
-      <button
-        onClick={generateQuiz}
-        style={{ marginLeft: "10px" }}
-      >
-        Generate Quiz
-      </button>
+        <ResponseCard response={summary} />
 
-      <button
-        onClick={generateSummary}
-        style={{ marginLeft: "10px" }}
-      >
-        Generate Summary
-      </button>
+        <ResponseCard response={quiz} />
 
-      <button
-        onClick={generateFlashcards}
-        style={{ marginLeft: "10px" }}
-      >
-        Generate Flashcards
-      </button>
+        <ResponseCard response={flashcards} />
 
-      <hr />
+        <ChatBox
+          question={question}
+          setQuestion={setQuestion}
+          askAI={askAI}
+          loading={loading === "chat"}
+        />
 
-      <h2>Ask AI</h2>
+        <ResponseCard response={chatAnswer} />
 
-      <input
-        type="text"
-        placeholder="Ask a question..."
-        value={question}
-        onChange={(e) => setQuestion(e.target.value)}
-        style={{
-          width: "70%",
-          padding: "10px",
-        }}
-      />
+        <VivaBox
+          uploadedFilename={uploadedFilename}
+        />
 
-      <br />
-      <br />
+      </main>
 
-      <button onClick={askAI}>Ask</button>
-
-      <hr />
-
-      <pre
-        style={{
-          textAlign: "left",
-          border: "1px solid gray",
-          padding: "15px",
-          minHeight: "220px",
-          whiteSpace: "pre-wrap",
-          overflowX: "auto",
-        }}
-      >
-        {response}
-      </pre>
     </div>
+
   );
-}
+  }
 
 export default App;

@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-
+from routers.viva import router as viva_router
 from routers.upload import router as upload_router
 from routers.notes import router as notes_router
 from routers.quiz import router as quiz_router
@@ -36,7 +36,7 @@ def home():
     }
 
 # -------------------- Routers --------------------
-
+app.include_router(viva_router)
 app.include_router(chat_router)
 app.include_router(upload_router)
 app.include_router(flashcards_router)

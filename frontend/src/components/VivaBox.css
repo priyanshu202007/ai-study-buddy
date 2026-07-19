@@ -1,0 +1,132 @@
+.viva-container {
+  margin-top: 30px;
+  background: #1f2937;
+  border-radius: 18px;
+  padding: 24px;
+  color: white;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+.viva-header h2 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.viva-header p {
+  margin: 10px 0;
+  color: #cbd5e1;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background: #374151;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #06b6d4);
+  transition: width 0.4s ease;
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-height: 450px;
+  overflow-y: auto;
+  margin: 20px 0;
+}
+
+.ai-message,
+.student-message {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.student-message {
+  flex-direction: row-reverse;
+}
+
+.avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #2563eb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.student-message .avatar {
+  background: #16a34a;
+}
+
+.message {
+  max-width: 75%;
+  padding: 14px;
+  border-radius: 14px;
+  background: #374151;
+  line-height: 1.6;
+}
+
+.student-message .message {
+  background: #2563eb;
+}
+
+.message pre {
+  margin: 0;
+  white-space: pre-wrap;
+  font-family: inherit;
+}
+
+.answer-section {
+  margin-top: 20px;
+}
+
+.answer-section textarea {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+  resize: vertical;
+  font-size: 15px;
+  outline: none;
+}
+
+.viva-button,
+.submit-button {
+  margin-top: 15px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: all 0.25s ease;
+}
+
+.viva-button:hover,
+.submit-button:hover {
+  transform: translateY(-2px);
+  background: #1d4ed8;
+}
+
+@media (max-width: 768px) {
+  .message {
+    max-width: 90%;
+  }
+
+  .avatar {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+}
